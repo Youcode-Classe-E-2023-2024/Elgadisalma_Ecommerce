@@ -18,72 +18,70 @@
     </head>
     <body>
 
-      
+        <div class="bg-white">
 
-
-<div class="bg-white">
-
-  <nav class="relative select-none bg-red-500 lg:flex lg:items-stretch w-full">
+        <nav class="relative select-none bg-red-500 lg:flex lg:items-stretch w-full">
             <div class="flex flex-no-shrink items-stretch h-12">
-              <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark"></a>
-              <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Css</a>
-              <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
+            <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark"></a>
+            <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Css</a>
+            <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
                 <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>
-              </button>
+            </button>
             </div>
             <div class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
-              <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
+            <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
                 <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Ajouter produit</a>
                 <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Mes produits</a>
                 <a href="#" class="flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-grey-dark">Item 3</a>
-              </div>
             </div>
-          </nav>
+            </div>
+        </nav>
 
 
-    <div class="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
-      <div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Trending products</h2>
+            <div class="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
+            <div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900">Trending products</h2>
+                
+            </div>
         
-      </div>
-  
-      <div class="relative mt-8 flex flex-col">
-        <div class="relative -mb-6 w-full overflow-x-auto pb-6">
-          <ul role="list" class="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:space-x-0 gap-5">
+            <div class="relative mt-8 flex flex-col">
+                <div class="relative -mb-6 w-full overflow-x-auto pb-6">
+                <ul role="list" class="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:space-x-0 gap-5">
 
-            @forelse ($products as $product)
+                    @forelse ($products as $product)
 
-            <li class="inline-flex w-64 flex-col text-center lg:w-auto border-2">
-              <div class="group relative">
-                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
-                  <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg" alt="Black machined steel pen with hexagonal grip and small white logo at top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                </div>
-                <div class="mt-6">
-                  <p class="text-sm text-gray-500">Black</p>
-                  <h3 class="mt-1 font-semibold text-gray-900">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      {{ $product['title'] }}
+                    <li class="inline-flex w-64 flex-col text-center lg:w-auto border-2">
+                    <div class="group relative">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
+                        <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg" alt="Black machined steel pen with hexagonal grip and small white logo at top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                        </div>
+                        <div class="mt-6">
+                        <p class="text-sm text-gray-500">Black</p>
+                        <h3 class="mt-1 font-semibold text-gray-900">
+                            <a href="#">
+                            <span class="absolute inset-0"></span>
+                            {{ $product['title'] }}
+                            </a>
+                        </h3>
+                        <p class="mt-1 text-gray-900">{{ $product['price'] }} dh</p>
+                        </div>
+                    </div>
+        
+                    <h4 class="sr-only">Available colors</h4>
+                    <a href="details/{{ $product['id'] }}" class="hidden text-sm font-semibold text-red-400 hover:text-cyan-500 sm:block m-2">
+                        See everything
+                        <span aria-hidden="true"> &rarr;</span>
                     </a>
-                  </h3>
-                  <p class="mt-1 text-gray-900">{{ $product['price'] }} dh</p>
-                </div>
-              </div>
-  
-              <h4 class="sr-only">Available colors</h4>
-              <a href="#" class="hidden text-sm font-semibold text-red-400 hover:text-cyan-500 sm:block m-2">
-                See everything
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </li>
+                    </li>
 
-            @empty
-            <p>No products Found</p>
-            @endforelse
+                    @empty
+                    <p>No products Found</p>
+                    @endforelse
 
-   
-    </div>
-  </div>
-</body>
+        
+            </div>
+        </div>
+
+    </body>
 </html>
