@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\product;
+use App\Models\Product;
 
-class productController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
-        $products = product::all();
+        $products = Product::all();
 
-        return view('products',compact('products'));
+        return view('products', compact('products'));
     }
 
+    public function getById($id)
+    {
+        $product = Product::find($id);
 
+        if (!$product) {
+            return redirect()->route('error');
+        }
+
+        return view('details', ['product' => $product]);
+    }
 }
