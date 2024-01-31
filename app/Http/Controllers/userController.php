@@ -16,6 +16,11 @@ class userController extends Controller
         return view('login');
     } 
 
+    public function index2()
+    {
+        return view('register');
+    } 
+
     public function register(Request $request)
     {
         // dd($request);
@@ -53,4 +58,12 @@ class userController extends Controller
         }
     }
 
+    public function logout()
+    {
+        Auth::logout(); 
+
+        return redirect()->route('login'); 
+        // return view('login');
+
+    }
 }
