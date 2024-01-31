@@ -23,9 +23,9 @@ class ProductController extends Controller
     public function add_product(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:3|max:200',
             'price' => 'required',
-            'description' => 'required',
+            'description' => 'required|min:310|max:500',
         ]);
 
         $createdBy = Auth::id();
