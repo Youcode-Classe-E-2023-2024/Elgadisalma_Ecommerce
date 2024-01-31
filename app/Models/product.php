@@ -17,4 +17,9 @@ class product extends Model
     ];
     protected $table = 'products';
 
+    public function createdByUser()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
 }
