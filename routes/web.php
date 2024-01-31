@@ -18,14 +18,22 @@ use App\Http\Controllers\userController;
 // Route::get('/products',[productController::class,'index']);
 
 Route::get('/', function () {
-    return view('register');
+    return view('login');
 });
 
+Route::middleware(['auth.check'])->group(function () 
+{
+
+Route::get('/products', [productController::class,'index'])->name('products');
 Route::get('/details/{id}', [productController::class,'getById'])->name('product.details');
 
+});
+
 Route::post('/register', [userController::class,'register'])->name('register');
+
+Route::get('/register', [userController::class,'index2'])->name('register.show');
 
 Route::get('/login', [userController::class,'index'])->name('login.show');
 Route::post('/login', [userController::class,'login'])->name('login');
 
-Route::get('/products', [productController::class,'index'])->name('products');
+Route::post('/logout', [userController::class,'logout'])->name('logout');
