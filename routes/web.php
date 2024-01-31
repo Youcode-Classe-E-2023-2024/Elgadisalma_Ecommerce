@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,10 @@ use App\Http\Controllers\productController;
 
 Route::get('/',[productController::class,'index']);
 
-// Route::get('/', function () {
-//     return view('products');
-// });
+Route::get('/', function () {
+    return view('register');
+});
 
 Route::get('/details/{id}', [productController::class,'getById'])->name('product.details');
+Route::post('/register', [userController::class,'register'])->name('register');
 
