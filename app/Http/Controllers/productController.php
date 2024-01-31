@@ -23,9 +23,9 @@ class ProductController extends Controller
     public function add_product(Request $request)
     {
         $request->validate([
-            'title' => 'required|min:3|max:200',
+            'title' => 'required',
             'price' => 'required',
-            'description' => 'required|min:310|max:500',
+            'description' => 'required',
         ]);
 
         $createdBy = Auth::id();
@@ -37,7 +37,7 @@ class ProductController extends Controller
             'created_by' => $createdBy,
         ]);
 
-        return view('add_product');    
+        return to_route('products')->with('success', 'Vous êtes bien connecté ');
     }
 
     public function getById($id)
@@ -50,4 +50,14 @@ class ProductController extends Controller
 
         return view('details', ['product' => $product]);
     }
+
+    public function getMyProducts()
+    {
+        $user = Auth::user();
+
+        $products = $user->products;
+
+        return view('myProduct', compact('products'));
+    }
+
 }
