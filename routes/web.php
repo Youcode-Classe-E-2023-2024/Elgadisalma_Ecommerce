@@ -15,12 +15,17 @@ use App\Http\Controllers\userController;
 |
 */
 
-Route::get('/',[productController::class,'index']);
+// Route::get('/products',[productController::class,'index']);
 
 Route::get('/', function () {
     return view('register');
 });
 
 Route::get('/details/{id}', [productController::class,'getById'])->name('product.details');
+
 Route::post('/register', [userController::class,'register'])->name('register');
 
+Route::get('/login', [userController::class,'index'])->name('login.show');
+Route::post('/login', [userController::class,'login'])->name('login');
+
+Route::get('/products', [productController::class,'index'])->name('products');
