@@ -1,3 +1,6 @@
+@php
+use Carbon\Carbon;
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -50,7 +53,7 @@
                         class="h-10 w-10 rounded-full object-cover" />
                     <div>
                         <p class="font-semibold text-gray-800 text-sm">salma</p>
-                        <p class="font-semibold text-gray-400 text-xs">12/12/12</p>
+                        <p class="font-semibold text-gray-400 text-xs">{{ Carbon::parse($product->created_at)->diffForHumans() }}</p>
                     </div>
                 </div>
                 
