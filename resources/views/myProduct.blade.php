@@ -55,27 +55,37 @@
                     @forelse ($products as $product)
 
                     <li class="inline-flex w-64 flex-col text-center lg:w-auto border-2">
-                    <div class="group relative">
-                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
-                        <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg" alt="Black machined steel pen with hexagonal grip and small white logo at top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    <form action="{{ route('edit.product', $product->id ) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="group relative">
+                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
+                            <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg" alt="Black machined steel pen with hexagonal grip and small white logo at top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                            </div>
+                            <div class="mt-6">
+                                <input class="mt-1 font-semibold text-gray-900 text-center"
+                                value="{{ $product->title }}" placeholder="Title" name="title"
+                                />
+                            <input class="mt-1 text-gray-900 text-center" value="{{ $product['price'] }}" type="number" name="price"/>
+                            </div>
                         </div>
-                        <div class="mt-6">
-                        <p class="text-sm text-gray-500">Black</p>
-                        <h3 class="mt-1 font-semibold text-gray-900">
-                            <a href="#">
-                            <span class="absolute inset-0"></span>
-                            {{ $product->title }}
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-gray-900">{{ $product['price'] }} dh</p>
-                        </div>
+            
+                        <h4 class="sr-only">Available colors</h4>
+                        <a href="details/{{ $product['id'] }}" class="hidden text-sm font-semibold text-red-400 hover:text-cyan-500 sm:block m-2">
+                            See everything
+                            <span aria-hidden="true"> &rarr;</span>
+                        </a>
+                        <div class="w-full flex py-2 justify-center">
+
+                            <button type="submit" name="modifier" class=" rounded-md bg-gray-500 px-7 py-2 font-semibold text-red-100 shadow-md duration-75 hover:bg-green-300">Modifier</button>
+                    </form>
+
+                    <form action="{{ route('delete.product', $product->id ) }}" method="post" class="w-1/2">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" name="supprimer" class="rounded-md bg-gray-500 px-5 py-2 font-semibold text-red-100 shadow-md duration-75 hover:bg-red-400">Supprimer</button>
+                    </form>
                     </div>
-        
-                    <h4 class="sr-only">Available colors</h4>
-                    <a href="details/{{ $product['id'] }}" class="hidden text-sm font-semibold text-red-400 hover:text-cyan-500 sm:block m-2">
-                        See everything
-                        <span aria-hidden="true"> &rarr;</span>
-                    </a>
                     </li>
 
                     @empty
