@@ -83,9 +83,11 @@
                     <p>No products Found</p>
                     @endforelse
 
-        
+                    <div class="flex justify-center">{{ $products->links() }}</div>
+
             </div>
-        </div>
+
+    </div>
 
     </body>
 </html>
