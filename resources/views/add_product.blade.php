@@ -46,7 +46,7 @@
             <!-- Author: FormBold Team -->
             <!-- Learn More: https://formbold.com -->
             <div class="mx-auto w-2/3 max-w-[550px] ">
-              <form action="{{ route('add_product') }}" method="POST">
+              <form action="{{ route('add_product') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-5">
                   <label
@@ -94,6 +94,22 @@
                     placeholder="Type your description"
                     class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   ></textarea>
+                </div>
+
+                <div class="mb-5">
+                  <label
+                    for="Image"
+                    class="mb-3 block text-base font-medium text-[#07074D]"
+                  >
+                  Image
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    accept="image/*"
+                  />
                 </div>
 
                 <div class="mb-5">
