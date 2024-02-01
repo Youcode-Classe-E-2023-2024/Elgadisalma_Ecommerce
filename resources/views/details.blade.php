@@ -60,7 +60,7 @@
                 
             </div>
 
-            <img class="w-2/3 h-80" src="https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg" />
+            <img class="w-2/3 h-80" src="{{ asset('storage/images/' . $product['image']) }}" />
 
             <div class="w-2/3 flex flex-col gap-5 text-gray-700">
                 <div class="flex gap-2 justify_end">
