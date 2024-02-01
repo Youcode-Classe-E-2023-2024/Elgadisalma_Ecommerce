@@ -58,7 +58,7 @@
                     <li class="inline-flex w-64 flex-col text-center lg:w-auto border-2">
                     <div class="group relative">
                         <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
-                        <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg" alt="Black machined steel pen with hexagonal grip and small white logo at top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                        <img src="{{ asset('storage/images/' . $product->image) }}" alt="" class="h-full w-full object-cover object-center group-hover:opacity-75">
                         </div>
                         <div class="mt-6">
                         <p class="text-sm text-gray-500">Black</p>
