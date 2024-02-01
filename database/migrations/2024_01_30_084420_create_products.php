@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('price');
+            $table->string('image');
             $table->integer('created_by'); 
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
