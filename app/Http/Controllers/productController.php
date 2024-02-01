@@ -60,4 +60,24 @@ class ProductController extends Controller
         return view('myProduct', compact('products'));
     }
 
+    public function deleteMyProducts(Product $product)
+    {
+        $product->delete();
+        return to_route('products')->with('success', 'Supprimé avec succés');
+
+    }
+
+    public function editMyProducts(Product $product)
+    {
+        $validated = request()->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'updated_at'=>now(),
+        ]);
+
+        $product->update($validated);
+
+        return to_route('getMyProducts')->with('success', 'Edité avec succés');
+    }
+
 }
