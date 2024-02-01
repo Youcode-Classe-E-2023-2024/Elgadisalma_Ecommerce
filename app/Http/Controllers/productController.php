@@ -26,15 +26,25 @@ class ProductController extends Controller
             'title' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $createdBy = Auth::id();
+
+        $image = $request->file('image');
+        $imageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+        $imageExtension = $image->getClientOriginalExtension();
+        $imageFullName = $imageName . '_' . time() . '.' . $imageExtension;
+
+        // Enregistrez le fichier dans le dossier public/images
+        $image->storeAs('images', $imageFullName, 'public');
 
         Product::create([
             'title' => $request->input('title'),
             'price' => $request->input('price'),
             'description' => $request->input('description'),
             'created_by' => $createdBy,
+            'image' => $imageFullName,
         ]);
 
         return to_route('products')->with('success', 'Vous êtes bien connecté ');
