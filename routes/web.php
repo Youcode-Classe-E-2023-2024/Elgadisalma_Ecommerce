@@ -32,6 +32,9 @@ Route::middleware(['auth.check'])->group(function ()
     Route::get('/details/{id}', [productController::class,'getById'])->name('product.details');
 
     Route::get('/myProduct', [productController::class,'getMyProducts'])->name('getMyProducts');
+    Route::delete('/myProduct/{product}', [ProductController::class, 'deleteMyProducts'])->name('delete.product');
+    Route::put('/myProduct/{product}', [ProductController::class, 'editMyProducts'])->name('edit.product');
+    
 
 });
 
