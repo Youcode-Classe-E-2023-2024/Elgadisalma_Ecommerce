@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth.check'])->group(function () 
 {
 
-    Route::get('/products', [productController::class,'index'])->name('products');
+    Route::match(['get', 'post'], '/products', [ProductController::class, 'index'])->name('products');
 
     Route::get('/add_product', [productController::class,'add_product_show'])->name('add_product_show');
     Route::post('/add_product', [productController::class,'add_product'])->name('add_product');
