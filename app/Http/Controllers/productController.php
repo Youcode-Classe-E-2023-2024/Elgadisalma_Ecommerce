@@ -58,7 +58,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         if (!$product) {
-            return redirect()->route('error');
+            return view('error');
         }
 
         return view('details', ['product' => $product]);
