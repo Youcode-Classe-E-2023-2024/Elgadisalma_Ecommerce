@@ -46,6 +46,20 @@
             <div class="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
             <div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
                 <h2 class="text-2xl font-bold tracking-tight text-gray-900">Trending products</h2>
+
+                <form action="{{ route('products') }}" method="post" class="flex flex-col bg-red-1 gap-2">
+                    @csrf
+                    <div class="flex w-full ">
+                    <label class="w-44 font-semibold text-gray-900 " for="sortBy">Trier par :</label>
+                    <select name="sortBy" id="sortBy" class="w-1/2 border-2 bg-purple-100 rounded">
+                        <option value="date" {{ ($sortBy == 'date') ? 'selected' : '' }}>Date</option>
+                        <option value="name" {{ ($sortBy == 'name') ? 'selected' : '' }}>Nom</option>
+                    </select>
+                    </div>
+                    
+                    <button class="border-2 w-full px-4 py-1 rounded" type="submit">Trier</button>
+                </form>
+                
                 
             </div>
         
