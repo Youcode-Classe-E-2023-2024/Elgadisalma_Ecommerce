@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(8);
+        $sortBy = $request->input('sortBy', 'date');
+        $orderByColumn = ($sortBy == 'name') ? 'title' : 'created_at';
 
-        return view('products', compact('products'));
+        $products = Product::orderBy($orderByColumn)->paginate(8);
+
+        return view('products', compact('products', 'sortBy'));
     }
 
     public function add_product_show()
