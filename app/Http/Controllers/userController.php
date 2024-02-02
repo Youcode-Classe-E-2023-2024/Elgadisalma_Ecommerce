@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
+
 
 
 class userController extends Controller
@@ -26,7 +28,11 @@ class userController extends Controller
         // dd($request);
         $request->validate([
             'username' => 'required',
-            'email' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email'),
+            ],            
             'password' => 'required',
         ]);
 
